@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name_full">KITAWALLET</string>
-    <string name="app_name">KITAWALLET</string>
-
+    <string name="app_name_full">FINTEHWALLET</string>
+    <string name="app_name">FINTEHWALLET</string>
     <!--侧边栏-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,9 +10,9 @@
 
     <string name="title_activity_sign_up_button">SignUpButtonActivity</string>
     <string name="sign_up_button">LOG IN</string>
-    <string name="dummy_content">KITAWALLET</string>
+    <string name="dummy_content">FINTEHWALLET</string>
 
-    <string name="splash_page_message">Safer way for storage and trade</string>
+    <string name="splash_page_message">Possess your wealth</string>
 
     <string name="about_activity_title">About</string>
     <string name="settings_activity_title">Settings</string>
@@ -53,7 +52,7 @@
     <string name="import_activity_password_invalid">Invalid password.</string>
     <string name="import_activity_file_bin_password_invalid">Invalid wallet file or password.</string>
 
-    <string name="password_confirm_title">Please type your password to confirm the transaction:</string>
+    <string name="password_confirm_title">Please type your password:</string>
     <string name="password_confirm_button_confirm">CONFIRM</string>
     <string name="password_confirm_button_cancel">CANCEL</string>
     <string name="password_invalid">Invalid password.</string>
@@ -69,7 +68,7 @@
     <string name="import_activity_account_model">Account Model</string>
     <string name="title_activity_settings">Settings</string>
 
-    <string name="about_activity_text">If you love our app, we appreciate it for getting donation from you.</string>
+    <string name="about_activity_text">for support our app buy FINTEH tokens or we appreciate it for getting donation from you.</string>
     <string name="about_activity_version">Version</string>
     <string name="about_activity_button">DONATE</string>
 
@@ -224,5 +223,22 @@
     <string name="pub_copied">Public key copied</string>
     <string name="priv_copied">Private key copied</string>
     <string name="copy_success">Copy Successfully</string>
-
+    <string name="create_account_account_name_incorrect">Account name can contain only lowercase Latin characters, numbers and dashes</string>
+    <string name="first_asset">Base asset</string>
+    <string name="second_asset">Quote asset</string>
+    <string name="add_pair_err">Invalid asset name!</string>
+    <string name="add_pair">Add assets pair</string>
+    <string name="add_pair_exist">This pair already exist!</string>
+    <string name="cannot_delete_selected_pair">Can not delete selected pair!</string>
+    <string name="enter_pass_private_key">Enter password to see private key</string>
+    <string name="deposit">Deposit</string>
+    <string name="an_error">An error has occurred. Try again later!</string>
+    <string name="loading_dots">Please wait...</string>
+    <string name="now_loading_list">Now loading a list of tokens</string>
+    <string name="now_loading_info">Now loading token information</string>
+    <string name="deposite_title">Deposit</string>
+    <string name="transfer_your_funds_to">Transfer your funds to:</string>
+    <string name="with_memo">with MEMO:</string>
+    <string name="min_amount">Min amount:</string>
+    <string name="copy">Copy</string>
 </resources>

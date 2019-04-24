@@ -25,12 +25,15 @@ import com.good.code.starts.here.ColorUtils;
 
 import java.util.Locale;
 
+import de.bitsharesmunich.graphenej.models.backup.WalletBackup;
+
 public class AboutActivity extends LocalizationActivity {
     private Toolbar mToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         //if(preferences.contains("locale")) setLanguage(preferences.getString("locale", "ru"));
         setContentView(R.layout.activity_about);
@@ -51,7 +54,7 @@ public class AboutActivity extends LocalizationActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView textViewAccountName = (TextView)findViewById(R.id.textViewAccountName);
-        final String strName = "cryptokita";
+        final String strName = "finteh";
         textViewAccountName.setText(strName);
 
         sha256_object.encoder encoder = new sha256_object.encoder();
@@ -60,27 +63,20 @@ public class AboutActivity extends LocalizationActivity {
         WebView webView = (WebView)findViewById(R.id.webViewAvatar);
         loadWebView(webView, 70, encoder.result().toString());
 
-        findViewById(R.id.textViewCopyAccount).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("account name", strName);
-                clipboardManager.setPrimaryClip(clipData);
-                Toast toast = Toast.makeText(AboutActivity.this, "Copy Successfully", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+        findViewById(R.id.textViewCopyAccount).setOnClickListener(v -> {
+            ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("account name", strName);
+            clipboardManager.setPrimaryClip(clipData);
+            Toast.makeText(AboutActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
         });
 
-        findViewById(R.id.btn_donate).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AboutActivity.this, MainActivity.class);
-                intent.putExtra("action", "donate");
-                intent.putExtra("name", strName);
-                intent.putExtra("amount", "10");
-                intent.putExtra("unit", "BTS");
-                startActivity(intent);
-            }
+        findViewById(R.id.btn_donate).setOnClickListener(v -> {
+            Intent intent = new Intent(AboutActivity.this, MainActivity.class);
+            intent.putExtra("action", "donate");
+            intent.putExtra("name", strName);
+            intent.putExtra("amount", "10");
+            intent.putExtra("unit", "BTS");
+            startActivity(intent);
         });
 
         TextView textViewVersion = (TextView)findViewById(R.id.textViewVersion);

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
+import android.support.multidex.MultiDexApplication;
 
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
 import com.bitshares.bitshareswallet.room.BitsharesDatabase;
@@ -20,12 +21,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import io.sentry.Sentry;
-import io.sentry.android.AndroidSentryClientFactory;
-
 //@AcraCore(buildConfigClass = BuildConfig.class, reportFormat = StringFormat.JSON)
 //@AcraHttpSender(uri = "https://collector.tracepot.com/e05fd60d", httpMethod = HttpSender.Method.POST)
-public class BitsharesApplication extends Application {
+public class BitsharesApplication extends MultiDexApplication {
 
     LocalizationApplicationDelegate localizationDelegate = new LocalizationApplicationDelegate(this);
 
@@ -62,23 +60,6 @@ public class BitsharesApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Fabric.with(this, new Answers(), new Crashlytics());
-        /*CoreConfigurationBuilder builder = new CoreConfigurationBuilder(this)
-                .setBuildConfigClass(BuildConfig.class)
-                .setReportFormat(StringFormat.JSON);
-        builder.getPluginConfigurationBuilder(HttpSenderConfigurationBuilder.class)
-                .setUri("http://95.179.134.24:5984/acra-bitshares/_design/acra-storage/_update/report")
-                .setHttpMethod(HttpSender.Method.POST)
-                .setBasicAuthLogin("bitshares_reporter")
-                .setBasicAuthPassword("yUofei783Jh0lseg94Qw")
-                .setEnabled(true);
-
-        ACRA.init(this, builder);*/
-
-        //ACRA.init(this);
-
-        String sentryDsn = "https://f7a95030510e4047ae1f7463327395b4@sentry.io/1261657";
-        Sentry.init(sentryDsn, new AndroidSentryClientFactory(this));
 
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
 
@@ -88,10 +69,13 @@ public class BitsharesApplication extends Application {
             String[] serversNames = getResources().getStringArray(R.array.full_node_api_server_options);
             String[] serversAddresses = getResources().getStringArray(R.array.full_node_api_server_values);
             Set<String> serversSet = new HashSet<>();
+            List<Server> serverList = new ArrayList<>();
             for(int i = 0; i < serversNames.length; i++) {
                 serversSet.add(serversNames[i] + " " + serversAddresses[i]);
+                serverList.add(new Server(serversNames[i], serversAddresses[i]));
             }
             preferences.edit().putStringSet("servers", serversSet).apply();
+            ServersRepository.INSTANCE.addServers(serverList);
         } else {
             List<Server> serverList = new ArrayList<>();
 
