@@ -9,7 +9,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 27
         versionCode 10300000
-        versionName "Alpha 1"
+        versionName "Beta one"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
