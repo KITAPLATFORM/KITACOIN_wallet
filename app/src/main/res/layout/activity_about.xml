@@ -51,7 +51,7 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textColor="@android:color/white"
-                android:text="Version 1.0.0"/>
+                android:text="Version 1.1.0"/>
 
             <TextView
                 android:id="@+id/textViewGithub"
@@ -61,7 +61,7 @@
                 android:layout_marginTop="10dp"
                 android:autoLink="web"
                 android:textColorLink="@android:color/white"
-                android:text="https://github.com/fintehru/finteh_wallet"
+                android:text="https://github.com/KITAPLATFORM/KITAWALLET"
                />
 
         </LinearLayout>
